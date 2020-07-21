@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html> 
+ <head>
+    <title></title> 
+</head>
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+	<script>
+	  var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(600, 600); 
+        frameRate(30);
+        
+        // ProgramCodeGoesHere
+        //click to add more cars
+//Shift deletes the cars
+//Left and right arrow keys controls the direction of the car.
+var theCar = [-150];
+var theCarSpeed = [random(1, 10)];
+var theCarBodyColor1 = [random(0,255)];
+var theCarBodyColor2 = [random(0,255)];
+var theCarBodyColor3 = [random(0,255)];
+var theCarHeadColor1 = [random(0,255)];
+var theCarHeadColor2 = [random(0,255)];
+var theCarHeadColor3 = [random(0,255)];
+
+// Controls the direction of the car
+var direction = 1;
+
+var windows = function(xPos, yPos){
+    strokeWeight(2);
+    fill(255, 255, 255);
+    rect(xPos,yPos,20,20);
+    line(xPos+10,yPos+19,xPos+10,yPos+0);
+    line(xPos+0,yPos+10,xPos+18,yPos+10);
+};
+var Pos = -250;
+var NotCar = function() {
+    background(0, 200, 255);
+    //sun
+    fill(230, 255, 0);
+    ellipse(60,60,100,100);
+    //house 1
+    fill(0, 0, 0);
+    rect(0,580,600,40);
+    fill(115, 80, 40);
+    rect(0,480,100,100);
+    fill(255, 0, 0);
+    triangle(0,480,100,481,50,400);
+    //door
+    fill(201, 150, 99);
+    rect(47,540,30,40);
+    //door thing
+    fill(0, 0, 0);
+    ellipse(70,558,5,5);
+    pushMatrix();
+    //window 1,1
+    strokeWeight(2);
+    fill(255, 255, 255);
+    rect(10,500,20,20);
+    line(20,519,20,500);
+    line(10,510,28,510);
+    //window 1,2
+    rect(55,500,20,20);
+    line(65,519,65,500);
+    line(72,510,56,510);
+    //window 1,3
+    fill(255, 255, 255);
+    rect(10,550,20,20);
+    line(20,568,20,550);
+    line(10,560,28,560);
+    // trash 1
+    fill(153, 144, 144);
+    rect(110,550,20,30);
+    fill(0, 0, 0);
+    line(120,580,120, 550);
+    line(125,580,125, 550);
+    line(115,580,115, 550);
+    popMatrix();
+    //garage
+    fill(110, 97, 97);
+    rect(145, 513, 100,67);
+    fill(176, 142, 86);
+    rect(153, 533, 80, 44);
+    line(231, 544, 155, 544);
+    line(231, 569, 155, 569);
+    line(231, 557, 155, 557);
+        //skyscraper
+       fill(180, 180, 180);
+        rect(350, 200, 150, 380);
+        fill(255, 255, 255);
+       rect(362, 530, 125, 50);
+       line(424.5, 530, 424.5, 580);
+      windows(370, 500);
+      windows(400, 500);
+      windows(430, 500);
+      windows(460, 500);
+      windows(370, 470);
+      windows(400, 470);
+      windows(430, 470);
+      windows(460, 470);
+      windows(370, 440);
+      windows(400, 440);
+      windows(430, 440);
+      windows(460, 440);
+      windows(370, 410);
+      windows(400, 410);
+      windows(430, 410);
+      windows(460, 410);
+      windows(370, 380);
+      windows(400, 380);
+      windows(430, 380);
+      windows(460, 380);
+      windows(370, 350);
+      windows(400, 350);
+      windows(430, 350);
+      windows(460, 350);
+      windows(370, 320);
+      windows(400, 320);
+      windows(430, 320);
+      windows(460, 320);
+      windows(370, 290);
+      windows(400, 290);
+      windows(430, 290);
+      windows(460, 290);
+      windows(370, 260);
+      windows(400, 260);
+      windows(430, 260);
+      windows(460, 260);
+      windows(370, 230);
+      windows(400, 230);
+      windows(430, 230);
+      windows(460, 230);
+      
+      
+   
+};
+var Car = function(){ //car
+    fill(0, 255, 0);
+    rect(theCar[0], 543, 40, 30);
+    fill(0, 225, 255);
+    rect(theCar[0]+40, 553, 20, 20);
+    
+    
+    //wheels
+    fill(0, 0, 0);
+    ellipse(theCar[0]+10, 574, 10, 10);
+    ellipse(theCar[0]+30, 574, 10, 10);
+    fill(255, 255, 255);
+    ellipse(theCar[0]+30,574, 6, 6);
+    ellipse(theCar[0]+10, 574, 6, 6);};
+    
+draw= function() {
+    
+    NotCar();
+    
+    if (keyPressed && keyCode === SHIFT) {
+        theCar.length = 0;
+        theCarSpeed.length = 0;
+        theCarBodyColor1.length = 0;
+        theCarBodyColor2.length = 0;
+        theCarBodyColor3.length = 0;
+        theCarHeadColor1.length = 0;
+        theCarHeadColor2.length = 0;
+        theCarHeadColor3.length = 0;
+    } 
+    
+    if (keyPressed && keyCode === LEFT) {
+        direction = -1;
+    }
+    
+    if (keyPressed && keyCode === RIGHT) {
+        direction = 1;
+    }
+    
+    mouseClicked = function() {
+        
+        theCar.push(-150);
+        theCarSpeed.push(random(1, 10));
+        theCarBodyColor1.push(random(0,255));
+        theCarBodyColor2.push(random(0,255));
+        theCarBodyColor3.push(random(0,255));
+        theCarHeadColor1.push(random(0,255));
+        theCarHeadColor2.push(random(0,255));
+        theCarHeadColor3.push(random(0,255));
+        
+    };
+   
+    for (var carNum = 0; carNum < theCar.length; carNum++) { 
+        
+
+        //the body of the car
+        fill(
+            theCarBodyColor1[carNum], 
+            theCarBodyColor2[carNum], 
+            theCarBodyColor3[carNum]
+        );
+        rect(theCar[carNum], 543, 40, 30);
+        fill(
+            theCarHeadColor1[carNum], 
+            theCarHeadColor2[carNum], 
+            theCarHeadColor3[carNum]
+        );
+        rect(theCar[carNum]+40, 553, 20, 20);
+        
+        //wheels
+        fill(0, 0, 0);
+        ellipse(theCar[carNum]+10, 574, 10, 10);
+        ellipse(theCar[carNum]+30, 574, 10, 10);
+        fill(255, 255, 255);
+        ellipse(theCar[carNum]+30,574, 6, 6);
+        ellipse(theCar[carNum]+10, 574, 6, 6);
+        theCar[carNum]= theCar[carNum] + direction*theCarSpeed[carNum];
+        
+        // loops the car around
+        if(theCar[carNum] > 630){
+            theCar[carNum]= -150;
+        }
+        if(theCar[carNum] < -150){
+            theCar[carNum]= 630;
+        }
+   
+    }
+}; 
+
+
+
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+	</script>
+	
+</html>
