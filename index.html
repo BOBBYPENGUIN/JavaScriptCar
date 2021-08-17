@@ -27,7 +27,6 @@ Shift deletes the cars (Does not work now)<br>Left and right arrow keys controls
         //click to add more cars
 //Shift deletes the cars
 //Left and right arrow keys controls the direction of the car.
-/*
 var Car = function(x, speed, headColorR, headColorG, headColorB, bodyColorR, bodyColorG, bodyColorB){
 	this.x = x;
 	this.speed = speed;
@@ -57,15 +56,14 @@ var arrayOfCars = [new Car(-140, random(1,10), random(0,255), random(0,255), ran
 direction = 1;
 draw = function(){
     mouseClicked = function() {
-        
-        arrayOfCars.push(new Car(-140, random(1,10), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255))
+        arrayOfCars.push(new Car(-140, random(1,10), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255)))
         
     };
     for(var carNumLoop = 0; carNumLoop < arrayOfCars.length; carNumLoop++){
-    	notCar();
-	arrayOfCars[carNumLoop].prototype.drawCar();
-	arrayOfCars[carNumLoop].x = arrayOfCars[carNumLoop].x + direction*arrayOfCars[carNumLoop].speed;
-	if(arrayOfCars[carNumLoop].x > 630){
+        NotCar();
+        arrayOfCars[carNumLoop].prototype.drawCar();
+        arrayOfCars[carNumLoop].x = arrayOfCars[carNumLoop].x + direction*arrayOfCars[carNumLoop].speed;
+        if(arrayOfCars[carNumLoop].x > 630){
             arrayOfCars[carNumLoop].x = -150;
         }
         if(arrayOfCars[carNumLoop].x < -150){
@@ -74,7 +72,7 @@ draw = function(){
     }
 };
 
-*/
+/*
 var theCar = [-150];
 var theCarSpeed = [random(1, 10)];
 var theCarBodyColor1 = [random(0,255)];
@@ -283,7 +281,7 @@ draw= function() {
    
     }
 }; 
-
+*/
 
 
     }};
