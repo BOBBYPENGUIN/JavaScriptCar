@@ -53,7 +53,7 @@ Car.prototype.drawCar = function(){
     ellipse(this.x+10, 574, 6, 6);
 };
 var arrayOfCars = [new Car(-140, random(1,10), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255))];
-direction = 1;
+var direction = 1;
 draw = function(){
     mouseClicked = function() {
         arrayOfCars.push(new Car(-140, random(1,10), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255), random(0,255)))
@@ -84,7 +84,7 @@ var theCarHeadColor3 = [random(0,255)];
 
 // Controls the direction of the car
 var direction = 1;
-
+*/
 var windows = function(xPos, yPos){
     strokeWeight(2);
     fill(255, 255, 255);
@@ -193,6 +193,7 @@ var NotCar = function() {
       
    
 };
+	     /*
 var Car = function(){ //car
     fill(0, 255, 0);
     rect(theCar[0], 543, 40, 30);
